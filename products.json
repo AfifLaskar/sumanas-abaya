@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "Noir Diamond Abaya",
+    "price": "$189",
+    "image": "assets/images/abaya_1.jpg",
+    "description": "A refined black abaya with geometric beadwork and artisan stitch detailing, designed for evening elegance and statement modest wear.",
+    "thumbs": ["assets/images/abaya_1.jpg", "assets/images/abaya_3.jpg", "assets/images/abaya_12.jpg"],
+    "details": ["Material: Premium Crepe", "Diamond-inspired bead embroidery", "Flowy structured silhouette", "Hand wash recommended", "Free worldwide shipping"]
+  },
+  {
+    "id": 2,
+    "name": "Steel Mist Abaya",
+    "price": "$215",
+    "image": "assets/images/abaya_2.jpg",
+    "description": "Soft steel-grey abaya with handwork accents and a graceful draped panel for understated luxury.",
+    "thumbs": ["assets/images/abaya_2.jpg", "assets/images/abaya_11.jpg", "assets/images/abaya_6.jpg"],
+    "details": ["Material: Soft crepe blend", "Hand-finished embellishment", "Layered drape panel", "Breathable everyday luxury", "Free worldwide shipping"]
+  },
+  {
+    "id": 3,
+    "name": "Obsidian Grace Abaya",
+    "price": "$245",
+    "image": "assets/images/abaya_3.jpg",
+    "description": "Deep black silhouette with minimal shimmer detailing crafted for elegant formal looks.",
+    "thumbs": ["assets/images/abaya_3.jpg", "assets/images/abaya_1.jpg", "assets/images/abaya_8.jpg"],
+    "details": ["Material: Luxe matte satin", "Minimal shimmer accents", "Elegant formal profile", "Soft drape finish", "Free worldwide shipping"]
+  },
+  {
+    "id": 4,
+    "name": "Twilight Bloom Abaya",
+    "price": "$275",
+    "image": "assets/images/abaya_4.jpg",
+    "description": "Classic noir abaya with floral cuff embellishment in jewel tones, blending tradition with artistry.",
+    "thumbs": ["assets/images/abaya_4.jpg", "assets/images/abaya_8.jpg", "assets/images/abaya_12.jpg"],
+    "details": ["Material: Premium black crepe", "Jewel-tone floral cuff embroidery", "Modern modest cut", "Signature artisan finish", "Free worldwide shipping"]
+  },
+  {
+    "id": 5,
+    "name": "Autumn Leaf Noir Abaya",
+    "price": "$165",
+    "image": "assets/images/abaya_5.jpg",
+    "description": "Black abaya with rich autumn leaf motifs for a poetic seasonal statement.",
+    "thumbs": ["assets/images/abaya_5.jpg", "assets/images/abaya_4.jpg", "assets/images/abaya_10.jpg"],
+    "details": ["Material: Lightweight crepe", "Leaf motif print", "Day-to-evening versatility", "Comfort fit", "Free worldwide shipping"]
+  },
+  {
+    "id": 6,
+    "name": "Amethyst Drift Abaya",
+    "price": "$289",
+    "image": "assets/images/abaya_6.jpg",
+    "description": "Elegant plum-toned abaya featuring delicate bead accents across a flowing modern cut.",
+    "thumbs": ["assets/images/abaya_6.jpg", "assets/images/abaya_10.jpg", "assets/images/abaya_2.jpg"],
+    "details": ["Material: Soft georgette crepe", "Micro-bead accents", "Graceful plum tone", "Flowy premium drape", "Free worldwide shipping"]
+  },
+  {
+    "id": 7,
+    "name": "Mint Blossom Abaya",
+    "price": "$199",
+    "image": "assets/images/abaya_7.jpg",
+    "description": "Fresh mint abaya with subtle floral detailing, perfect for daytime sophistication.",
+    "thumbs": ["assets/images/abaya_7.jpg", "assets/images/abaya_10.jpg", "assets/images/abaya_11.jpg"],
+    "details": ["Material: Cool-touch crepe", "Soft floral motifs", "Fresh mint palette", "Daywear elegant fit", "Free worldwide shipping"]
+  },
+  {
+    "id": 8,
+    "name": "Noir Celeste Kaftan",
+    "price": "$259",
+    "image": "assets/images/abaya_8.jpg",
+    "description": "Flowing black kaftan with intricate tonal embroidery for elevated evening wear.",
+    "thumbs": ["assets/images/abaya_8.jpg", "assets/images/abaya_9.jpg", "assets/images/abaya_3.jpg"],
+    "details": ["Material: Premium drape satin", "Tonal embroidery panels", "Kaftan silhouette", "Evening-ready finish", "Free worldwide shipping"]
+  },
+  {
+    "id": 9,
+    "name": "Noir Lattice Kaftan",
+    "price": "$175",
+    "image": "assets/images/abaya_9.jpg",
+    "description": "Minimal black kaftan featuring elegant geometric embroidery lines and refined drape.",
+    "thumbs": ["assets/images/abaya_9.jpg", "assets/images/abaya_8.jpg", "assets/images/abaya_12.jpg"],
+    "details": ["Material: Smooth crepe satin", "Lattice embroidery trim", "Relaxed kaftan fit", "Minimalist luxury", "Free worldwide shipping"]
+  },
+  {
+    "id": 10,
+    "name": "Rose Veil Abaya",
+    "price": "$299",
+    "image": "assets/images/abaya_10.jpg",
+    "description": "Soft rose abaya with floral embellishment accents, designed for graceful festive styling.",
+    "thumbs": ["assets/images/abaya_10.jpg", "assets/images/abaya_7.jpg", "assets/images/abaya_11.jpg"],
+    "details": ["Material: Premium soft crepe", "Floral embellishment details", "Festive rose tone", "Elegant flared profile", "Free worldwide shipping"]
+  },
+  {
+    "id": 11,
+    "name": "Lavender Garden Abaya",
+    "price": "$185",
+    "image": "assets/images/abaya_11.jpg",
+    "description": "Lavender abaya with embroidered garden-inspired cuffs and scarf detail for a romantic look.",
+    "thumbs": ["assets/images/abaya_11.jpg", "assets/images/abaya_10.jpg", "assets/images/abaya_2.jpg"],
+    "details": ["Material: Textured crepe weave", "Garden-inspired cuff embroidery", "Coordinated scarf detail", "Romantic pastel tone", "Free worldwide shipping"]
+  },
+  {
+    "id": 12,
+    "name": "Noir Petal Cuff Abaya",
+    "price": "$229",
+    "image": "assets/images/abaya_12.jpg",
+    "description": "Classic black abaya with subtle petal-inspired cuff embellishment and modern clean lines.",
+    "thumbs": ["assets/images/abaya_12.jpg", "assets/images/abaya_1.jpg", "assets/images/abaya_9.jpg"],
+    "details": ["Material: Signature black crepe", "Petal-inspired cuff work", "Contemporary clean tailoring", "All-occasion wear", "Free worldwide shipping"]
+  }
+]
