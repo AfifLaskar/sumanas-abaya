@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Review your abaya order and place it securely through EmailJS.">
+    <meta property="og:title" content="Checkout | Sumana's Abaya Collection">
+    <meta property="og:description" content="Review your cart and send your order directly by email.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/DP-logo.png">
+    <link rel="icon" type="image/png" href="assets/images/DP-logo.png">
+    <title>Checkout | Sumana's Abaya Collection</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><img src="assets/images/DP-logo.png" alt="Sumana's Abaya logo"></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="checkout.html" class="active">Checkout <span class="cart-count" data-cart-count>0</span></a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu">â˜°</button>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <p class="eyebrow">Secure Order Review</p>
+        <h1>Checkout</h1>
+        <p>Review your selected abayas and send the order by email.</p>
+    </section>
+
+    <section class="checkout-page">
+        <div class="checkout-layout">
+            <div class="checkout-panel">
+                <div class="checkout-summary-head">
+                    <div>
+                        <p class="eyebrow">Order Summary</p>
+                        <h2>Your Cart</h2>
+                    </div>
+                    <p><strong id="checkoutCount">0</strong> item(s)</p>
+                </div>
+
+                <div id="checkoutEmptyState" class="checkout-empty" hidden>
+                    <h3>Your cart is empty</h3>
+                    <p>Add an abaya from the product page, then return here to complete the order.</p>
+                    <div class="checkout-actions checkout-empty-actions">
+                        <a href="shop.html" class="btn-primary" id="continueShoppingBtn">Continue Shopping</a>
+                    </div>
+                </div>
+
+                <div id="checkoutItems" class="checkout-items"></div>
+
+                <div class="checkout-totals">
+                    <div class="checkout-total-row">
+                        <span>Subtotal</span>
+                        <strong id="checkoutSubtotal">$0</strong>
+                    </div>
+                    <div class="checkout-total-row">
+                        <span>Shipping</span>
+                        <strong>Free</strong>
+                    </div>
+                    <div class="checkout-total-row total">
+                        <span>Total</span>
+                        <strong id="checkoutTotal">$0</strong>
+                    </div>
+                </div>
+
+                <p class="checkout-note">Orders are sent directly to the store by email. Please double-check your contact details before submitting.</p>
+
+                <div class="checkout-actions">
+                    <button type="button" class="btn-secondary" id="clearCartBtn">Clear Cart</button>
+                    <a href="shop.html" class="btn-secondary">Back to Shop</a>
+                </div>
+            </div>
+
+            <div class="checkout-panel">
+                <div class="checkout-summary-head">
+                    <div>
+                        <p class="eyebrow">Customer Details</p>
+                        <h2>Shipping Information</h2>
+                    </div>
+                </div>
+
+                <form class="checkout-form" id="checkoutForm">
+                    <div class="checkout-form-grid">
+                        <div class="form-group">
+                            <label for="checkoutName">Full Name</label>
+                            <input id="checkoutName" name="name" type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkoutEmail">Email</label>
+                            <input id="checkoutEmail" name="email" type="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkoutPhone">Phone</label>
+                            <input id="checkoutPhone" name="phone" type="tel" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkoutCity">City</label>
+                            <input id="checkoutCity" name="city" type="text" required>
+                        </div>
+                        <div class="form-group full">
+                            <label for="checkoutAddress">Address</label>
+                            <input id="checkoutAddress" name="address" type="text" required>
+                        </div>
+                        <div class="form-group full">
+                            <label for="checkoutPostcode">Postcode</label>
+                            <input id="checkoutPostcode" name="postcode" type="text" required>
+                        </div>
+                        <div class="form-group full">
+                            <label for="checkoutNotes">Order Notes</label>
+                            <textarea id="checkoutNotes" name="notes" rows="5" placeholder="Delivery instructions, size preferences, or other details."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="checkout-actions">
+                        <button type="submit" class="btn-primary" id="checkoutSubmit">Place Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3 class="logo"><img src="assets/images/Footer_logo-transparent.png" alt="Sumana's Abaya logo"></h3>
+                <p>Elegance redefined through modern Arabic craftsmanship.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="shop.html">All Abayas</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/sumanas_abaya_collection?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=61568886278308" target="_blank" rel="noopener noreferrer">Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Â© 2026 Sumana's Abaya Collection. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
