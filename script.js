@@ -4,6 +4,7 @@ const CART_STORAGE_KEY = "sumanas_abaya_cart_v2";
 const EMAILJS_PUBLIC_KEY = "aNn3bf0fTi3TYSn2r";
 const EMAILJS_SERVICE_ID = "service_1mch35h";
 const EMAILJS_TEMPLATE_ID = "template_60mr9uj";
+const STORE_EMAIL = "sumonasabaya@gmail.com";
 const DEFAULT_SHIPPING_COST = 70;
 
 function showToast(message) {
@@ -701,7 +702,10 @@ function bindCheckoutPage() {
         try {
             await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
                 name: payload.name || "",
-                email: payload.email || "",
+                email: STORE_EMAIL,
+                to_email: STORE_EMAIL,
+                customer_email: payload.email || "",
+                reply_to: payload.email || "",
                 phone: payload.phone || "",
                 address: payload.address || "",
                 city: payload.city || "",
