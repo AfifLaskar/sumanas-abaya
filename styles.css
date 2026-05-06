@@ -1184,6 +1184,93 @@ body.nav-open {
     color: var(--text);
 }
 
+/* Order success */
+.success-page {
+    min-height: 68vh;
+    padding: 5rem 2rem 6rem;
+    display: grid;
+    place-items: center;
+    background:
+        linear-gradient(rgba(250, 250, 250, 0.82), rgba(245, 241, 234, 0.95)),
+        url("assets/images/Hero_bg.png") center/cover;
+}
+
+.success-panel {
+    width: min(760px, 100%);
+    padding: clamp(2rem, 5vw, 4rem);
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(139, 115, 85, 0.22);
+    text-align: center;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.12);
+}
+
+.success-mark {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 1.4rem;
+    border: 2px solid var(--secondary);
+    border-radius: 50%;
+    position: relative;
+    background: var(--cream);
+}
+
+.success-mark::after {
+    content: "";
+    position: absolute;
+    left: 27px;
+    top: 19px;
+    width: 17px;
+    height: 31px;
+    border: solid var(--secondary);
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.success-panel h1 {
+    margin-bottom: 1rem;
+}
+
+.success-copy {
+    max-width: 560px;
+    margin: 0 auto;
+    color: var(--muted);
+}
+
+.success-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.success-details div {
+    padding: 1rem;
+    background: var(--cream);
+    border: 1px solid rgba(139, 115, 85, 0.18);
+}
+
+.success-details span {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.success-details strong {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.success-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+}
+
 .toast {
     position: fixed;
     right: max(1rem, env(safe-area-inset-right));
@@ -1345,6 +1432,10 @@ body.nav-open {
     .checkout-summary-head {
         flex-direction: column;
         align-items: stretch;
+    }
+
+    .success-details {
+        grid-template-columns: 1fr;
     }
 
     .btn-primary, .btn-secondary, .filter-btn, .size-btn {

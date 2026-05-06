@@ -729,8 +729,7 @@ function bindCheckoutPage() {
 
             saveCart([]);
             form.reset();
-            renderCheckoutPage();
-            showToast("Order sent successfully.");
+            window.location.href = `order-success.html?order=${encodeURIComponent(transactionId)}`;
         } catch (error) {
             console.error("EmailJS checkout failed:", error);
             showToast("Checkout failed. Try again.");
@@ -763,5 +762,14 @@ window.addEventListener("load", async () => {
     setupScrollShiftSections();
     setupProductMagnifier();
     updateCartCount();
+    showSuccessOrderId();
     bindCheckoutPage();
 });
+
+function showSuccessOrderId() {
+    const orderIdEl = document.getElementById("successOrderId");
+    if (!orderIdEl) return;
+
+    const orderId = new URLSearchParams(window.location.search).get("order");
+    orderIdEl.textContent = orderId || "Confirmed";
+}
