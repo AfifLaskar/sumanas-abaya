@@ -4,6 +4,7 @@ const CART_STORAGE_KEY = "sumanas_abaya_cart_v2";
 const EMAILJS_PUBLIC_KEY = "aNn3bf0fTi3TYSn2r";
 const EMAILJS_SERVICE_ID = "service_1mch35h";
 const EMAILJS_TEMPLATE_ID = "template_60mr9uj";
+const EMAILJS_CUSTOMER_TEMPLATE_ID = "template_lgl5gwj";
 const STORE_EMAIL = "sumonasabaya@gmail.com";
 const DEFAULT_SHIPPING_COST = 70;
 
@@ -700,7 +701,7 @@ function bindCheckoutPage() {
         }
 
         try {
-            await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            const orderPayload = {
                 name: payload.name || "",
                 email: STORE_EMAIL,
                 to_email: STORE_EMAIL,
@@ -721,7 +722,10 @@ function bindCheckoutPage() {
                     dateStyle: "medium",
                     timeStyle: "short"
                 })
-            });
+            };
+
+            await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, orderPayload);
+            await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CUSTOMER_TEMPLATE_ID, orderPayload);
 
             saveCart([]);
             form.reset();
