@@ -613,6 +613,7 @@ function initEmailJs() {
 function bindCheckoutPage() {
     const form = document.getElementById("checkoutForm");
     if (!form) return;
+    let hasShownValidationAlert = false;
 
     initEmailJs();
     renderCheckoutPage();
@@ -654,8 +655,24 @@ function bindCheckoutPage() {
         input.addEventListener("change", renderCheckoutPage);
     });
 
+    form.querySelectorAll("[required]").forEach((field) => {
+        field.addEventListener("invalid", () => {
+            if (hasShownValidationAlert) return;
+            hasShownValidationAlert = true;
+            window.alert("Please fill in all mandatory fields before placing your order.");
+            window.setTimeout(() => {
+                hasShownValidationAlert = false;
+            }, 200);
+        });
+    });
+
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
+        if (!form.checkValidity()) {
+            window.alert("Please fill in all mandatory fields before placing your order.");
+            form.reportValidity();
+            return;
+        }
 
         const cart = getCart();
         if (!cart.length) {
