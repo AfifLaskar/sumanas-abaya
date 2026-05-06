@@ -1136,6 +1136,32 @@ body.nav-open {
     grid-column: 1 / -1;
 }
 
+.delivery-options {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.delivery-option {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 3rem;
+    padding: 0.8rem 0.9rem;
+    border: 1px solid rgba(26, 26, 26, 0.12);
+    background: #fff;
+    cursor: pointer;
+}
+
+.delivery-option input {
+    width: auto;
+    accent-color: var(--secondary);
+}
+
+.delivery-option span {
+    font-size: 0.95rem;
+    color: var(--text);
+}
+
 .checkout-actions {
     display: flex;
     flex-wrap: wrap;

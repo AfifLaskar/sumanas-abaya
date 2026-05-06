@@ -1,9 +1,10 @@
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
-const CART_STORAGE_KEY = "sumanas_abaya_cart_v1";
+const CART_STORAGE_KEY = "sumanas_abaya_cart_v2";
 const EMAILJS_PUBLIC_KEY = "aNn3bf0fTi3TYSn2r";
 const EMAILJS_SERVICE_ID = "service_1mch35h";
 const EMAILJS_TEMPLATE_ID = "template_60mr9uj";
+const DEFAULT_SHIPPING_COST = 70;
 
 function showToast(message) {
     let toast = document.querySelector(".toast");
@@ -22,11 +23,7 @@ function showToast(message) {
 
 function formatMoney(value) {
     const amount = Number.isFinite(value) ? value : 0;
-    return new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-        maximumFractionDigits: 0
-    }).format(amount);
+    return `Tk ${Math.round(amount).toLocaleString("en-US")}`;
 }
 
 function parseMoney(value) {
@@ -60,6 +57,16 @@ function getCartSubtotal(cart = getCart()) {
         const quantity = Number(item.quantity) || 0;
         return sum + price * quantity;
     }, 0);
+}
+
+function getSelectedShippingCost() {
+    const selected = document.querySelector('input[name="delivery_area"]:checked');
+    const cost = selected ? Number(selected.getAttribute("data-shipping-cost")) : DEFAULT_SHIPPING_COST;
+    return Number.isFinite(cost) ? cost : DEFAULT_SHIPPING_COST;
+}
+
+function getSelectedShippingArea() {
+    return document.querySelector('input[name="delivery_area"]:checked')?.value || "Inside Dhaka";
 }
 
 function updateCartCount() {
@@ -280,8 +287,8 @@ async function setupDynamicProductPage() {
             brand: { "@type": "Brand", name: "Sumana's Abaya" },
             offers: {
                 "@type": "Offer",
-                priceCurrency: "USD",
-                price: product.price.replace("$", ""),
+                priceCurrency: "BDT",
+                price: product.price.replace(/[^0-9.]/g, ""),
                 availability: "https://schema.org/InStock"
             }
         });
@@ -520,6 +527,7 @@ function renderCheckoutPage() {
     const emptyState = document.getElementById("checkoutEmptyState");
     const form = document.getElementById("checkoutForm");
     const subtotalEl = document.getElementById("checkoutSubtotal");
+    const shippingEl = document.getElementById("checkoutShipping");
     const totalEl = document.getElementById("checkoutTotal");
     const countEl = document.getElementById("checkoutCount");
     const submitBtn = document.getElementById("checkoutSubmit");
@@ -530,12 +538,15 @@ function renderCheckoutPage() {
     const cart = getCart();
     const count = getCartCount(cart);
     const subtotal = getCartSubtotal(cart);
+    const shipping = cart.length ? getSelectedShippingCost() : 0;
+    const total = subtotal + shipping;
 
     updateCartCount();
 
     if (countEl) countEl.textContent = String(count);
     if (subtotalEl) subtotalEl.textContent = formatMoney(subtotal);
-    if (totalEl) totalEl.textContent = formatMoney(subtotal);
+    if (shippingEl) shippingEl.textContent = formatMoney(shipping);
+    if (totalEl) totalEl.textContent = formatMoney(total);
 
     if (itemsRoot) {
         itemsRoot.innerHTML = "";
@@ -639,6 +650,10 @@ function bindCheckoutPage() {
         });
     }
 
+    form.querySelectorAll('input[name="delivery_area"]').forEach((input) => {
+        input.addEventListener("change", renderCheckoutPage);
+    });
+
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
@@ -657,6 +672,8 @@ function bindCheckoutPage() {
         const originalLabel = submitBtn ? submitBtn.textContent : "";
         const payload = Object.fromEntries(new FormData(form).entries());
         const subtotal = getCartSubtotal(cart);
+        const shipping = getSelectedShippingCost();
+        const total = subtotal + shipping;
         const transactionId = `SA-${Date.now().toString().slice(-8)}`;
 
         if (submitBtn) {
@@ -673,9 +690,12 @@ function bindCheckoutPage() {
                 city: payload.city || "",
                 postcode: payload.postcode || "",
                 notes: payload.notes || "",
+                delivery_area: payload.delivery_area || getSelectedShippingArea(),
+                shipping_cost: formatMoney(shipping),
                 transaction_id: transactionId,
                 cart_items: buildCartItemsText(cart),
-                total: formatMoney(subtotal),
+                subtotal: formatMoney(subtotal),
+                total: formatMoney(total),
                 order_date: new Date().toLocaleString("en-US", {
                     dateStyle: "medium",
                     timeStyle: "short"
